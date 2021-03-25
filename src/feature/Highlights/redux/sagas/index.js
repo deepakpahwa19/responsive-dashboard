@@ -1,0 +1,1 @@
+export { highlightsWatcherSaga } from './highlightsSaga';

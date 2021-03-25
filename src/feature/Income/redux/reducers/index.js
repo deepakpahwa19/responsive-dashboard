@@ -1,0 +1,1 @@
+export { incomeReducer } from './IncomeReducer';

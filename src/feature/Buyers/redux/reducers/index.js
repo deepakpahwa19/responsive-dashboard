@@ -1,0 +1,1 @@
+export { buyersReducer } from './buyersReducer';

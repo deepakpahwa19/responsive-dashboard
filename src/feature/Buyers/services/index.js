@@ -1,0 +1,1 @@
+export { getBuyersAPI } from './buyersAPI';

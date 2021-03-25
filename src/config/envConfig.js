@@ -1,8 +1,8 @@
 export const Urls = {
     development: {
-        baseUrl: 'https://findfalcone.herokuapp.com'
+        baseUrl: 'http://13.232.99.42'
     },
     production: {
-        baseUrl: 'https://findfalcone.herokuapp.com'
+        baseUrl: 'http://13.232.99.42'
     }
 };

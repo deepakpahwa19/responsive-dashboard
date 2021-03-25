@@ -1,0 +1,1 @@
+export { highlightsReducer } from './highlightsReducer';

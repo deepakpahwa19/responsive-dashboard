@@ -1,0 +1,1 @@
+export { incomeWatcherSaga } from './incomeSaga';

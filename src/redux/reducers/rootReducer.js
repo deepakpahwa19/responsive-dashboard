@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
-import destinationReducer from './destinationReducer';
+import { countriesReducer } from '../../feature/Countries/';
+import { highlightsReducer } from '../../feature/Highlights';
+import { buyersReducer } from '../../feature/Buyers';
+import { incomeReducer } from '../../feature/Income';
 
 const rootReducer = combineReducers({
-    destinations: destinationReducer
+    countries: countriesReducer,
+    highlights: highlightsReducer,
+    buyers: buyersReducer,
+    income: incomeReducer
 });
 
 export default rootReducer;

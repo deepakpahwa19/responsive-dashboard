@@ -1,0 +1,1 @@
+export { getHighlightsAPI } from './highlightsAPI';

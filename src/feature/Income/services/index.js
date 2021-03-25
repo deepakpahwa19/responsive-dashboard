@@ -1,0 +1,1 @@
+export { getIncomeAPI } from './incomeAPI';
