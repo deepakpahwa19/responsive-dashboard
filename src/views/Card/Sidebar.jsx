@@ -30,7 +30,7 @@ export const SideBarStyle = styled.div`
     background: #20649b;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 0;
     color: #fff;
@@ -69,5 +69,6 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+    height: 80%;
     padding: 5%;
 `;

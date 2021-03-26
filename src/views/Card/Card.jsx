@@ -5,7 +5,7 @@ import { SideBar } from './Sidebar';
 import { Chart } from './Chart';
 import { DropDownView } from '../DropDownView/DropDownView';
 
-export const Card = ({ name, header, data, stats, filter, value, onChangeHandler }) => {
+export const Card = ({ name, header, data, stats, filter, value, onChangeHandler, handleOnZoom }) => {
     return (
         <CardStyle>
             <Header>
@@ -17,7 +17,7 @@ export const Card = ({ name, header, data, stats, filter, value, onChangeHandler
                         options={['Sort by Label', 'Sort by Value']}
                         onChangeHandler={onChangeHandler}
                     ></DropDownView>
-                    <ExpandIcon></ExpandIcon>
+                    <ExpandIcon onClick={handleOnZoom}></ExpandIcon>
                 </DivStyle>
             </Header>
             <Content>
@@ -37,8 +37,7 @@ const Header = styled.header`
     padding: 1em 1.5em;
     border-top: 4px solid #7dd343;
     color: #fff;
-    position: relative;
-    height: 60px;
+    height: min(60px, 25%);
 `;
 
 const DivStyle = styled.div`
@@ -48,17 +47,22 @@ const DivStyle = styled.div`
 const CardStyle = styled.div`
     display: flex;
     flex-direction: column;
-    height: 370px;
-    width: 45vw;
+    height: 100%;
+    width: 100%;
     min-width: 300px;
     box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 25%);
     margin: 10px auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 `;
 
 const Content = styled.div`
     display: flex;
     flex-direction: row;
-    height: calc(370px - 60px);
+    height: 75%;
 `;
 
 const ExpandIcon = styled(FaExpand)`

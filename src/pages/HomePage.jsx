@@ -10,9 +10,9 @@ export const HomePage = () => {
         <>
             <MainSectionStyle>
                 <Highlights />
-                <Buyers />
+                {/* <Buyers />
                 <Countries />
-                <Income />
+                <Income /> */}
             </MainSectionStyle>
         </>
     );
@@ -23,4 +23,6 @@ const MainSectionStyle = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: calc(100vh - 60px);
+    width: 100%;
 `;

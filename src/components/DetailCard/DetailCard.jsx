@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Card } from '../../views';
 
-export const DetailCard = ({ name, dataSet, stats, filter }) => {
+export const DetailCard = ({ name, dataSet, stats, filter, handleOnZoom }) => {
     const [sortedData, setSortedData] = useState(dataSet.data);
     const handleSortDropDownChange = useCallback(
         event => {
@@ -29,6 +29,7 @@ export const DetailCard = ({ name, dataSet, stats, filter }) => {
             stats={stats}
             filter={filter}
             onChangeHandler={handleSortDropDownChange}
+            handleOnZoom={handleOnZoom}
         ></Card>
     );
 };

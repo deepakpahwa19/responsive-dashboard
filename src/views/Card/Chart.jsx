@@ -16,9 +16,13 @@ export const Chart = ({ header, data, filter }) => {
             </HeaderRow>
             <ContentStyle>
                 {data.map((dataObj, index) => (
-                    <Row key={dataObj.label} color={dataObj.color} index={index}>
-                        <CenteredDiv width='60%'>{dataObj.label}</CenteredDiv>
-                        <CenteredDiv width='40%'>{dataObj.value}</CenteredDiv>
+                    <Row key={dataObj.label} index={index}>
+                        <CenteredDiv width='60%' color={dataObj.color}>
+                            {dataObj.label}
+                        </CenteredDiv>
+                        <CenteredDiv width='40%' color={dataObj.color}>
+                            {dataObj.value}
+                        </CenteredDiv>
                     </Row>
                 ))}
             </ContentStyle>
@@ -41,7 +45,7 @@ const FlexContainer = styled.div`
 `;
 
 const Header = styled(FlexContainer)`
-    height: 50px;
+    height: max(50px, 20%);
     font-size: 20px;
     font-weight: bold;
 
@@ -64,9 +68,8 @@ const Header = styled(FlexContainer)`
 `;
 
 const Row = styled(FlexContainer)`
-    min-height: 43px;
+    height: clamp(43px, 60px, 10em);
     background-color: ${({ index }) => (index % 2 === 0 ? '#fff' : '#f7f8f9')};
-    color: ${color => (color ? color : '#FFF')};
 `;
 
 const HeaderRow = styled(FlexContainer)`
@@ -74,6 +77,7 @@ const HeaderRow = styled(FlexContainer)`
 `;
 
 const ContentStyle = styled.div`
+    height: 80%;
     display: flex;
     flex-direction: column;
     overflow-y: overlay;
@@ -87,4 +91,5 @@ const H3 = styled.h3`
 const CenteredDiv = styled.div`
     text-align: center;
     width: ${({ width }) => width || '100%'};
+    color: ${color => (color ? color : '#FFF')};
 `;
