@@ -25,6 +25,5 @@ DropDownView.propTypes = {
 };
 
 const Select = styled.select`
-    /* margin: 10px 0;
-    padding: 5px; */
+    background-color: #20649b;
 `;

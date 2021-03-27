@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DetailCard } from '../../components/';
 import { getCountriesAction } from './redux/actions/actions/countriesAction';
 
-export const Countries = ({ onClickZoom }) => {
+export const Countries = ({ onClickZoom, selectedCard }) => {
     const { dataSet, stats, filter } = useSelector(state => state.countries);
     console.log('data =>', dataSet);
     const dispatch = useDispatch();
@@ -16,6 +16,7 @@ export const Countries = ({ onClickZoom }) => {
         return (
             <DetailCard
                 name='Countries'
+                selectedCard={selectedCard}
                 dataSet={dataSet}
                 stats={stats}
                 filter={filter}

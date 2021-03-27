@@ -5,42 +5,45 @@ import { SideBar } from './Sidebar';
 import { Chart } from './Chart';
 import { DropDownView } from '../DropDownView/DropDownView';
 
-export const Card = ({
-    name,
-    header,
-    data,
-    stats,
-    filter,
-    value,
-    onChangeHandler,
-    handleOnZoomIn,
-    handleOnZoomOut,
-    expand
-}) => {
-    console.log('Inside Card , expand=>', name, expand);
-    return (
-        <CardStyle expand={expand}>
-            <Header>
-                <h3>{name}</h3>
-                <DivStyle>
-                    <DropDownView
-                        name={name}
-                        value={value}
-                        options={['Sort by Label', 'Sort by Value']}
-                        onChangeHandler={onChangeHandler}
-                    ></DropDownView>
-                    {expand ? <ZoomOutIcon onClick={handleOnZoomOut} /> : <ZoomInIcon onClick={handleOnZoomIn} />}
-                </DivStyle>
-            </Header>
-            <Content>
-                <SideBar stats={stats}></SideBar>
-                <Chart header={header} data={data} filter={filter}>
-                    Chart
-                </Chart>
-            </Content>
-        </CardStyle>
-    );
-};
+export const Card = React.memo(
+    ({
+        name,
+        selectedCard,
+        header,
+        data,
+        stats,
+        filter,
+        value,
+        onChangeHandler,
+        handleOnZoomIn,
+        handleOnZoomOut,
+        expand
+    }) => {
+        console.log('Inside Card , expand=>', name, expand);
+        return (
+            <CardStyle expand={expand}>
+                <Header>
+                    <h3>{name}</h3>
+                    <DivStyle>
+                        <DropDownView
+                            name={name}
+                            value={value}
+                            options={['Sort by Label', 'Sort by Value']}
+                            onChangeHandler={onChangeHandler}
+                        ></DropDownView>
+                        {expand ? <ZoomOutIcon onClick={handleOnZoomOut} /> : <ZoomInIcon onClick={handleOnZoomIn} />}
+                    </DivStyle>
+                </Header>
+                <Content>
+                    <SideBar stats={stats}></SideBar>
+                    <Chart header={header} data={data} filter={filter}>
+                        Chart
+                    </Chart>
+                </Content>
+            </CardStyle>
+        );
+    }
+);
 
 const Header = styled.header`
     display: flex;
@@ -57,6 +60,7 @@ const DivStyle = styled.div`
 `;
 
 const CardStyle = styled.div`
+    /* display: ${({ shouldDisplay }) => (shouldDisplay ? 'flex' : 'none')}; */
     display: flex;
     flex-direction: column;
     height: ${({ expand }) => expand && '100%'};

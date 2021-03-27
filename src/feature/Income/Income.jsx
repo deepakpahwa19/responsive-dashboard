@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DetailCard } from '../../components';
 import { getIncomeAction } from './redux/actions/actions/incomeAction';
 
-export const Income = ({ onClickZoom }) => {
+export const Income = ({ onClickZoom, selectedCard }) => {
     const { dataSet, stats, filter } = useSelector(state => state.income);
     console.log('data =>', dataSet);
     const dispatch = useDispatch();
@@ -16,6 +16,7 @@ export const Income = ({ onClickZoom }) => {
         return (
             <DetailCard
                 name='Income'
+                selectedCard={selectedCard}
                 dataSet={dataSet}
                 stats={stats}
                 filter={filter}

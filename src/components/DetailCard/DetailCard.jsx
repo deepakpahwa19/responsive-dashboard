@@ -1,18 +1,18 @@
 import React, { useCallback, useState } from 'react';
 import { Card } from '../../views';
 
-export const DetailCard = React.memo(({ name, dataSet, stats, filter, onClickZoom }) => {
+export const DetailCard = React.memo(({ name, selectedCard, dataSet, stats, filter, onClickZoom }) => {
     const [sortedData, setSortedData] = useState(dataSet.data);
     const [expand, setExpand] = useState(false);
-    const handleOnZoomIn = () => {
+    const handleOnZoomIn = useCallback(() => {
         setExpand(true);
         onClickZoom(name);
-    };
+    }, [name, onClickZoom]);
 
-    const handleOnZoomOut = () => {
+    const handleOnZoomOut = useCallback(() => {
         setExpand(false);
-        onClickZoom('test');
-    };
+        onClickZoom('');
+    }, [onClickZoom]);
     // const { expand, setExpand } = useContext();
     const handleSortDropDownChange = useCallback(
         event => {
@@ -31,18 +31,22 @@ export const DetailCard = React.memo(({ name, dataSet, stats, filter, onClickZoo
         [dataSet]
     );
 
-    return (
-        <Card
-            name={name}
-            header={dataSet.header}
-            data={sortedData}
-            onChangeSort={handleSortDropDownChange}
-            stats={stats}
-            filter={filter}
-            onChangeHandler={handleSortDropDownChange}
-            handleOnZoomIn={handleOnZoomIn}
-            handleOnZoomOut={handleOnZoomOut}
-            expand={expand}
-        ></Card>
-    );
+    if ((selectedCard && selectedCard === name) || !selectedCard) {
+        return (
+            <Card
+                name={name}
+                selectedCard={selectedCard}
+                header={dataSet.header}
+                data={sortedData}
+                onChangeSort={handleSortDropDownChange}
+                stats={stats}
+                filter={filter}
+                onChangeHandler={handleSortDropDownChange}
+                handleOnZoomIn={handleOnZoomIn}
+                handleOnZoomOut={handleOnZoomOut}
+                expand={expand}
+            ></Card>
+        );
+    }
+    return null;
 });

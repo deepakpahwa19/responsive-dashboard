@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DetailCard } from '../../components';
 import { getBuyersAction } from './redux/actions/actions/buyersAction';
 
-export const Buyers = ({ onClickZoom }) => {
+export const Buyers = ({ onClickZoom, selectedCard }) => {
     const { dataSet, stats, filter } = useSelector(state => state.buyers);
     const dispatch = useDispatch();
 
@@ -15,6 +15,7 @@ export const Buyers = ({ onClickZoom }) => {
         return (
             <DetailCard
                 name='Buyers'
+                selectedCard={selectedCard}
                 dataSet={dataSet}
                 stats={stats}
                 filter={filter}

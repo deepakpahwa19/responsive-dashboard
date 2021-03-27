@@ -9,34 +9,15 @@ export const Dashboard = () => {
     const [zoomComponentName, setZoomComponentName] = useState('');
 
     const handleZoom = name => setZoomComponentName(name);
-    let content;
-    switch (zoomComponentName) {
-        case 'Highlights':
-            content = <Highlights onClickZoom={handleZoom} />;
-            break;
-        case 'Buyers':
-            content = <Buyers onClickZoom={handleZoom} />;
-            break;
-        case 'Countries':
-            content = <Countries onClickZoom={handleZoom} />;
-            break;
-        case 'Income':
-            content = <Income onClickZoom={handleZoom} />;
-            break;
-        default:
-            content = (
-                <>
-                    <Highlights onClickZoom={handleZoom} />
-                    <Buyers onClickZoom={handleZoom} />
-                    <Countries onClickZoom={handleZoom} />
-                    <Income onClickZoom={handleZoom} />
-                </>
-            );
-            break;
-    }
+
     return (
         <>
-            <MainSectionStyle>{content}</MainSectionStyle>
+            <MainSectionStyle>
+                <Highlights onClickZoom={handleZoom} selectedCard={zoomComponentName} />
+                <Buyers onClickZoom={handleZoom} selectedCard={zoomComponentName} />
+                <Countries onClickZoom={handleZoom} selectedCard={zoomComponentName} />
+                <Income onClickZoom={handleZoom} selectedCard={zoomComponentName} />
+            </MainSectionStyle>
         </>
     );
 };
