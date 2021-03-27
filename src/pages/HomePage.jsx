@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Navbar } from '../components/NavBar/Navbar';
 import { Dashboard } from '../feature/Dashboard/Dashboard';
 
 export const HomePage = () => {
     return (
         <>
+            <Navbar />
             <Dashboard />
         </>
     );

@@ -68,7 +68,7 @@ const Header = styled(FlexContainer)`
 `;
 
 const Row = styled(FlexContainer)`
-    height: 20%;
+    height: max(20%, 43px);
     min-height: 43px;
     background-color: ${({ index }) => (index % 2 === 0 ? '#fff' : '#f7f8f9')};
 `;

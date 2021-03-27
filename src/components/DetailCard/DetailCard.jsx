@@ -22,9 +22,11 @@ export const DetailCard = React.memo(({ name, selectedCard, dataSet, stats, filt
             if (value === 'Sort by Value') {
                 newSortedData = newSortedData.sort((a, b) => a.value - b.value);
             } else {
-                newSortedData = newSortedData.sort((a, b) =>
-                    a.label.toLowerCase().localeCompare(b.label.toLowerCase())
-                );
+                newSortedData = newSortedData.sort((a, b) => {
+                    const aLow = a.label.toLowerCase();
+                    const bLow = b.label.toLowerCase();
+                    return bLow > aLow ? -1 : aLow > bLow ? 1 : 0;
+                });
             }
             setSortedData(newSortedData);
         },

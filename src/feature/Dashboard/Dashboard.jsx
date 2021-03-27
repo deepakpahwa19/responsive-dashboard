@@ -27,6 +27,7 @@ const MainSectionStyle = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 7rem);
+    margin-top: 7rem;
     width: 100%;
 `;

@@ -70,6 +70,7 @@ const CardStyle = styled.div`
     box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 25%);
     margin: 10px auto;
     position: ${({ expand }) => (expand ? 'absolute' : 'relative')};
+    margin-top: ${({ expand }) => (expand ? '8rem' : '')};
     top: ${({ expand }) => (expand ? '0' : '')};
     left: ${({ expand }) => (expand ? '0' : '')};
     right: ${({ expand }) => (expand ? '0' : '')};
