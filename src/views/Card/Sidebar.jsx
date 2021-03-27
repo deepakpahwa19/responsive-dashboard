@@ -15,7 +15,7 @@ export const SideBar = ({ stats = {} }) => {
                 ))}
             </Container>
             <Nav>
-                <Anchor href='/get_highlight' target='_blank'>
+                <Anchor target='_blank'>
                     <span>View API</span>
                     <RightArrowIcon />
                 </Anchor>
