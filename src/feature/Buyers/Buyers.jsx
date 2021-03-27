@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DetailCard } from '../../components';
 import { getBuyersAction } from './redux/actions/actions/buyersAction';
 
-export const Buyers = () => {
+export const Buyers = ({ onClickZoom }) => {
     const { dataSet, stats, filter } = useSelector(state => state.buyers);
-    console.log('data =>', dataSet);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,7 +12,15 @@ export const Buyers = () => {
     }, [dispatch]);
 
     if (!!dataSet && !!stats && !!filter)
-        return <DetailCard name='Buyers' dataSet={dataSet} stats={stats} filter={filter}></DetailCard>;
+        return (
+            <DetailCard
+                name='Buyers'
+                dataSet={dataSet}
+                stats={stats}
+                filter={filter}
+                onClickZoom={onClickZoom}
+            ></DetailCard>
+        );
     // return <div>Test</div>;
     return <div>Hello</div>;
 };

@@ -1,8 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Card } from '../../views';
 
-export const DetailCard = ({ name, dataSet, stats, filter, handleOnZoom }) => {
+export const DetailCard = React.memo(({ name, dataSet, stats, filter, onClickZoom }) => {
     const [sortedData, setSortedData] = useState(dataSet.data);
+    const [expand, setExpand] = useState(false);
+    const handleOnZoomIn = () => {
+        setExpand(true);
+        onClickZoom(name);
+    };
+
+    const handleOnZoomOut = () => {
+        setExpand(false);
+        onClickZoom('test');
+    };
+    // const { expand, setExpand } = useContext();
     const handleSortDropDownChange = useCallback(
         event => {
             const { value } = event.target;
@@ -29,7 +40,9 @@ export const DetailCard = ({ name, dataSet, stats, filter, handleOnZoom }) => {
             stats={stats}
             filter={filter}
             onChangeHandler={handleSortDropDownChange}
-            handleOnZoom={handleOnZoom}
+            handleOnZoomIn={handleOnZoomIn}
+            handleOnZoomOut={handleOnZoomOut}
+            expand={expand}
         ></Card>
     );
-};
+});

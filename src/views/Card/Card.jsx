@@ -1,13 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaExpand } from 'react-icons/fa';
+import { FaExpand, FaMinus } from 'react-icons/fa';
 import { SideBar } from './Sidebar';
 import { Chart } from './Chart';
 import { DropDownView } from '../DropDownView/DropDownView';
 
-export const Card = ({ name, header, data, stats, filter, value, onChangeHandler, handleOnZoom }) => {
+export const Card = ({
+    name,
+    header,
+    data,
+    stats,
+    filter,
+    value,
+    onChangeHandler,
+    handleOnZoomIn,
+    handleOnZoomOut,
+    expand
+}) => {
+    console.log('Inside Card , expand=>', name, expand);
     return (
-        <CardStyle>
+        <CardStyle expand={expand}>
             <Header>
                 <h3>{name}</h3>
                 <DivStyle>
@@ -17,7 +29,7 @@ export const Card = ({ name, header, data, stats, filter, value, onChangeHandler
                         options={['Sort by Label', 'Sort by Value']}
                         onChangeHandler={onChangeHandler}
                     ></DropDownView>
-                    <ExpandIcon onClick={handleOnZoom}></ExpandIcon>
+                    {expand ? <ZoomOutIcon onClick={handleOnZoomOut} /> : <ZoomInIcon onClick={handleOnZoomIn} />}
                 </DivStyle>
             </Header>
             <Content>
@@ -37,7 +49,7 @@ const Header = styled.header`
     padding: 1em 1.5em;
     border-top: 4px solid #7dd343;
     color: #fff;
-    height: min(60px, 25%);
+    height: 60px;
 `;
 
 const DivStyle = styled.div`
@@ -47,25 +59,31 @@ const DivStyle = styled.div`
 const CardStyle = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
-    min-width: 300px;
+    height: ${({ expand }) => expand && '100%'};
+    width: ${({ expand }) => expand && '100%'};
+    min-width: max(300px, 45vw);
+    min-height: 400px;
     box-shadow: 3px 3px 5px 0 rgb(0 0 0 / 25%);
     margin: 10px auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: ${({ expand }) => (expand ? 'absolute' : 'relative')};
+    top: ${({ expand }) => (expand ? '0' : '')};
+    left: ${({ expand }) => (expand ? '0' : '')};
+    right: ${({ expand }) => (expand ? '0' : '')};
+    bottom: ${({ expand }) => (expand ? '0' : '')};
 `;
 
 const Content = styled.div`
     display: flex;
     flex-direction: row;
-    height: 75%;
+    height: 100%;
 `;
 
-const ExpandIcon = styled(FaExpand)`
+const ZoomInIcon = styled(FaExpand)`
+    margin-left: 10px;
+    margin-top: 4px;
+`;
+
+const ZoomOutIcon = styled(FaMinus)`
     margin-left: 10px;
     margin-top: 4px;
 `;

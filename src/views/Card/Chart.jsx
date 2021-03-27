@@ -45,7 +45,7 @@ const FlexContainer = styled.div`
 `;
 
 const Header = styled(FlexContainer)`
-    height: max(50px, 20%);
+    height: 50px;
     font-size: 20px;
     font-weight: bold;
 
@@ -68,7 +68,8 @@ const Header = styled(FlexContainer)`
 `;
 
 const Row = styled(FlexContainer)`
-    height: clamp(43px, 60px, 10em);
+    height: 20%;
+    min-height: 43px;
     background-color: ${({ index }) => (index % 2 === 0 ? '#fff' : '#f7f8f9')};
 `;
 
@@ -77,7 +78,7 @@ const HeaderRow = styled(FlexContainer)`
 `;
 
 const ContentStyle = styled.div`
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow-y: overlay;
